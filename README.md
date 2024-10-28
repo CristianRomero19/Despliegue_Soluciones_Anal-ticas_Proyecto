@@ -8,5 +8,5 @@ El repositorio contiene 4 carpetas con la informacion correspondiente al proyect
 * **Documentacion:** Esta carpeta contiene el documentacion del proyecto y los documentos de entrega con los lineamientos solicitados por la universidad de los Andes.
 * **Resultados_Preliminares:** Esta carpeta contiene los resultados preliminares del codigo del proyecto.
 
-[andes-img]: https://uniandes.edu.co/sites/default/files/logo-uniandes_1.png
+[andes-img]: https://upload.wikimedia.org/wikipedia/commons/4/47/University_of_Los_Andes_logo.svg
 [UAndes]: https://uniandes.edu.co/
