@@ -1,4 +1,4 @@
-# Despliegue_Soluciones_Anal-ticas_Proyecto [![Universidad de los Andes][andes-img]][UAndes]
+# Despliegue_Soluciones_Anal-ticas_Proyecto [UAndes]
 Este es el repositorio para la materia Despliegue de soluciones analíticas de la maestria MIAD de la universidad de los Andes
 
 El repositorio contiene 4 carpetas con la informacion correspondiente al proyecto final las cuales son:
@@ -8,5 +8,4 @@ El repositorio contiene 4 carpetas con la informacion correspondiente al proyect
 * **Documentacion:** Esta carpeta contiene el documentacion del proyecto y los documentos de entrega con los lineamientos solicitados por la universidad de los Andes.
 * **Resultados_Preliminares:** Esta carpeta contiene los resultados preliminares del codigo del proyecto.
 
-[andes-img]: 
 [UAndes]: https://uniandes.edu.co/
