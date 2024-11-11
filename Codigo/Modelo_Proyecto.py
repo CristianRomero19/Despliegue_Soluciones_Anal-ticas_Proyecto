@@ -9,9 +9,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.naive_bayes import GaussianNB
 from sklearn.model_selection import train_test_split
-from sklearn import metrics 
-import matplotlib.pyplot as plt
-import seaborn as sns
+from sklearn import metrics
 
 data = pd.read_csv("./Data/Human_Resources.csv")
 X=data.drop('Attrition', axis=1)
