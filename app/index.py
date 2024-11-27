@@ -48,8 +48,8 @@ app.layout = MantineProvider(
                             html.Div(
                                 children=[
                                     create_nav_link("mdi:home", "Home", "/home"),
-                                    create_nav_link("mdi:people", "Customer Base", "/main"),
-                                    create_nav_link("mdi:magnify", "Churn Investigation", "/churn"),
+                                    create_nav_link("mdi:people", "Employee Base", "/main"),
+                                    create_nav_link("mdi:magnify", "Attrition Prediction", "/attrition"),
                                 ]
                             )
                         ]
@@ -73,8 +73,8 @@ def display_page(pathname):
     # Cambiar contenido basado en la URL
     if pathname == '/main':
         return pages.main.layout
-    elif pathname == '/churn':
-        return pages.churn.layout
+    elif pathname == '/attrition':
+        return pages.attrition.layout
     elif pathname == '/home' or pathname == '/':
         return html.Div("Home Page")
     else:
