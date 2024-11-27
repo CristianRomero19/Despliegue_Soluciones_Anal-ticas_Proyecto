@@ -11,7 +11,11 @@ dash._dash_renderer._set_react_version('18.2.0')
 
 # Cargar datos fuera de las callbacks
 df = pd.read_csv('./app/data/Human_Resources.csv')
+sc = df.query('Attrition == "No"')
 df = df.infer_objects()
+
+hh = df[['OverTime', 'Attrition']].groupby(['OverTime', 'Attrition']).size().to_frame().reset_index()
+old = df[['Department', 'Attrition']].groupby(['Department', 'Attrition']).size().to_frame().reset_index()
 
 
 # Layout del dashboard
@@ -158,7 +162,7 @@ layout = html.Div(
                             p='sm',
                             style={'height': '350px', 'width': '400px'},
                             children=[
-                                dmc.Title('Age Distribution', order=4, style={'font-family': 'IntegralCF-Regular', 'text-align': 'center', 'color': 'grey'}),
+                                dmc.Title('OverTime Distribution', order=4, style={'font-family': 'IntegralCF-Regular', 'text-align': 'center', 'color': 'grey'}),
                                 dcc.Graph(id='age')
                             ]
                         ),
@@ -191,9 +195,9 @@ layout = html.Div(
 )
 def update_graph(input_value):
     # Crear las gráficas
-    gender_figure = px.bar(df, x='Gender', title='Gender Distribution')
-    age_figure = px.histogram(df, x='Age', title='Age Distribution')
-    department_figure = px.bar(df, x='Department', title='Department Distribution')
+    gender_figure = px.pie(sc, names='Gender', color='Gender', hole=0.5, labels=['Female', 'Male'], title='Gender Distribution')
+    age_figure = px.bar(hh, x='OverTime', y=0, color='Attrition', barmode='group', text_auto=True, title='OverTime Distribution')
+    department_figure = px.bar(old, x='Department', y=0, color='Attrition', barmode='group', text_auto=True, title='Department Distribution')
 
     return gender_figure, age_figure, department_figure
 
