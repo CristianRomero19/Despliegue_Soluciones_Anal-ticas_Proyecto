@@ -10,7 +10,7 @@ from app import app
 dash._dash_renderer._set_react_version('18.2.0')
 
 # Cargar datos fuera de las callbacks
-df = pd.read_csv('./app/data/Human_Resources.csv')
+df = pd.read_csv('./data/Human_Resources.csv')
 sc = df.query('Attrition == "No"')
 df = df.infer_objects()
 
