@@ -7,7 +7,7 @@ import pandas as pd
 from app import app
 
 # Cargar el modelo
-model = joblib.load('./model/model_attrition.joblib')
+model = joblib.load('../model/model_attrition.joblib')
 
 
 # Layout de la aplicación
