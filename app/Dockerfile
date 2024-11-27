@@ -14,4 +14,4 @@ RUN pip install -r requirements.txt
 EXPOSE 8050
 
 # Comandos a ejecutar al correr el contenedor 
-CMD ["python", "index.py"]
+CMD ["python", "app.py"]
