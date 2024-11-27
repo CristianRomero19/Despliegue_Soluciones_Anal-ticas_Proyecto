@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Proyecto 2 - ML & NLP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            align-items: center;
+        }
+        label {
+            grid-column: span 1;
+            font-weight: bold;
+        }
+        input[type="text"], textarea, input[type="number"], select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            grid-column: span 1;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            grid-column: span 2;
+            justify-self: center;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f1f1f1;
+            max-width: 600px;
+            text-align: center;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h2>Ingrese los Detalles del trabajador</h2>
+    <form id="predictionForm">
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="Age" min="1" required>
+
+        <label for="BusinessTravel">BusinessTravel:</label>
+        <select id="BusinessTravel" name="BusinessTravel" required>
+            <option value="2">Travel Rarely</option>
+            <option value="1">Travel Frequently</option>
+            <option value="0">Non-Travel</option>
+        </select>
+
+        <label for="Department">Department:</label>
+        <select id="Department" name="Department" required>
+            <option value="2">Sales</option>
+            <option value="1">Research & Development</option>
+            <option value="0">Human Resources</option>
+        </select>
+
+        <label for="DistanceFromHome">DistanceFromHome:</label>
+        <input type="number" id="DistanceFromHome" name="DistanceFromHome" min="1" required>
+
+        <label for="Education">Education:</label>
+        <select id="Education" name="Education" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+
+        <label for="EducationField">EducationField:</label>
+        <select id="EducationField" name="EducationField" required>
+            <option value="1">Life Sciences</option>
+            <option value="3">Medical</option>
+            <option value="2">Marketing</option>
+            <option value="5">Technical Degree</option>
+            <option value="0">Human Resources</option>
+            <option value="4">Other</option>
+        </select>
+
+        <label for="Gender">Gender:</label>
+        <select id="Gender" name="Gender" required>
+            <option value="0">Female</option>
+            <option value="1">Male</option>
+        </select>
+
+        <label for="MaritalStatus">MaritalStatus:</label>
+        <select id="MaritalStatus" name="MaritalStatus" required>
+            <option value="2">Single</option>
+            <option value="1">Married</option>
+            <option value="0">Divorced</option>
+        </select>
+
+        <label for="NumCompaniesWorked">NumCompaniesWorked:</label>
+        <input type="number" id="NumCompaniesWorked" name="NumCompaniesWorked" min="1" required>
+
+        <label for="TrainingTimesLastYear">TrainingTimesLastYear:</label>
+        <input type="number" id="TrainingTimesLastYear" name="TrainingTimesLastYear" min="0" required>
+
+        <label for="YearsAtCompany">YearsAtCompany:</label>
+        <input type="number" id="YearsAtCompany" name="YearsAtCompany" min="1" required>
+
+        <input type="submit" value="Predecir Attrition">
+    </form>
+
+    <div id="result" style="display:none;">
+        <h3>Resultado de la Predicción:</h3>
+        <p id="predictionText"></p>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#predictionForm').on('submit', function(event) {
+                event.preventDefault(); // Prevenir la recarga de la página
+                
+                // Obtener datos del formulario
+                const formData = $(this).serialize();
+                
+                // Hacer una solicitud AJAX al backend
+                $.ajax({
+                    url: '/predict',
+                    type: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        // Mostrar los resultados en la misma página
+                        $('#result').show();
+                        $('#predictionText').text(`Attrition: ${response.Attrition}`);
+                    },
+                    error: function(xhr, status, error) {
+                        // Manejar errores
+                        $('#result').show();
+                        $('#predictionText').text('Error: ' + xhr.responseJSON.error);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
