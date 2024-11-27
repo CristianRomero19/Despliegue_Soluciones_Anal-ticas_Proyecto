@@ -1,0 +1,6 @@
+dash==2.18.2
+dash-iconify==0.1.2
+dash-mantine-components==0.15.0
+pandas==2.2.0
+plotly==5.9.0
+scikit-learn==1.5.0
