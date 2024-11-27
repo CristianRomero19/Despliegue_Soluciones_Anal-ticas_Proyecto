@@ -12,14 +12,14 @@ model = joblib.load('./model/model_attrition.joblib')
 
 # Layout de la aplicación
 layout = html.Div([
-    html.H1("Ingrese los Detalles del trabajador", style={'textAlign': 'center', 'color': 'green'}),
+    html.H1("Enter Employee Details", style={'textAlign': 'center', 'color': 'green'}),
     
     # Tabla de 2 columnas
     html.Table([
         # Fila 1 - Age
         html.Tr([
             html.Td("Age:"),
-            html.Td(dcc.Input(id='Age', type='number', placeholder='Ingrese Edad')),
+            html.Td(dcc.Input(id='Age', type='number', placeholder='Enter Age')),
         ]),
         # Fila 2 - BusinessTravel
         html.Tr([
@@ -50,7 +50,7 @@ layout = html.Div([
         # Fila 4 - DistanceFromHome
         html.Tr([
             html.Td("DistanceFromHome:"),
-            html.Td(dcc.Input(id='DistanceFromHome', type='number', placeholder='Ingrese Distancia desde el hogar')),
+            html.Td(dcc.Input(id='DistanceFromHome', type='number', placeholder='Distance in km')),
         ]),
         # Fila 5 - Education
         html.Tr([
@@ -110,17 +110,17 @@ layout = html.Div([
         # Fila 9 - NumCompaniesWorked
         html.Tr([
             html.Td("NumCompaniesWorked:"),
-            html.Td(dcc.Input(id='NumCompaniesWorked', type='number', placeholder='Número de empresas trabajadas')),
+            html.Td(dcc.Input(id='NumCompaniesWorked', type='number', placeholder='number of companies he/she has worked for')),
         ]),
         # Fila 10 - TrainingTimesLastYear
         html.Tr([
             html.Td("TrainingTimesLastYear:"),
-            html.Td(dcc.Input(id='TrainingTimesLastYear', type='number', placeholder='Entrenamientos el año pasado')),
+            html.Td(dcc.Input(id='TrainingTimesLastYear', type='number', placeholder='Training periods in the last year')),
         ]),
         # Fila 11 - YearsAtCompany
         html.Tr([
             html.Td("YearsAtCompany:"),
-            html.Td(dcc.Input(id='YearsAtCompany', type='number', placeholder='Años en la compañía')),
+            html.Td(dcc.Input(id='YearsAtCompany', type='number', placeholder='Years at company')),
         ]),
     ], style={'margin': 'auto', 'padding': '20px', 'border': '1px solid #ddd', 'width': '50%'}),
 
